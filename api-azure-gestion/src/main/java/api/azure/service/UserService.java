@@ -14,7 +14,7 @@ public class UserService {
 
     // Crear un nuevo usuario
     public void createUser(User user) throws SQLException {
-        String sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?)";
         
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -29,7 +29,7 @@ public class UserService {
     // Obtener todos los usuarios
     public List<User> getAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users";
+        String sql = "SELECT * FROM usuarios";
         
         try (Connection connection = DatabaseConnection.getConnection();
              Statement stmt = connection.createStatement();
@@ -50,7 +50,7 @@ public class UserService {
 
     // Actualizar un usuario
     public void updateUser(Long id, User user) throws SQLException {
-        String sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
+        String sql = "UPDATE usuarios SET name = ?, email = ?, password = ? WHERE id = ?";
         
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -65,7 +65,7 @@ public class UserService {
 
     // Eliminar un usuario
     public void deleteUser(Long id) throws SQLException {
-        String sql = "DELETE FROM users WHERE id = ?";
+        String sql = "DELETE FROM usuarios WHERE id = ?";
         
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {

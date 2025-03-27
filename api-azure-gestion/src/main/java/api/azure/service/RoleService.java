@@ -12,7 +12,7 @@ public class RoleService {
 
     // Crear un nuevo rol
     public void createRole(Role role) throws SQLException {
-        String sql = "INSERT INTO roles (name) VALUES (?)";
+        String sql = "INSERT INTO roles (role_name) VALUES (?)";
         
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -33,7 +33,7 @@ public class RoleService {
             
             while (rs.next()) {
                 Long id = rs.getLong("id");
-                String name = rs.getString("name");
+                String name = rs.getString("role_name");
                 
                 Role role = new Role(id, name);
                 roles.add(role);
@@ -44,7 +44,7 @@ public class RoleService {
 
     // Actualizar un rol
     public void updateRole(Long id, Role role) throws SQLException {
-        String sql = "UPDATE roles SET name = ? WHERE id = ?";
+        String sql = "UPDATE roles SET role_name = ? WHERE id = ?";
         
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
